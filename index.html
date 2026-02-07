@@ -1,0 +1,210 @@
+document.getElementById("minutes").textContent = minutos < 10 ? "0" + minutos : minutos;
+                document.getElementById("seconds").textContent = segundos < 10 ? "0" + segundos : segundos;
+            }
+            
+            // Actualizar inmediatamente y luego cada segundo
+            actualizarContador();
+            const intervaloContador = setInterval(actualizarContador, 1000);
+        }
+        
+        // CONTROL DE VIDEO - POPUP AL FINALIZAR
+        let player;
+        let videoEnded = false;
+        
+        function onYouTubeIframeAPIReady() {
+            player = new YT.Player('video-player', {
+                events: {
+                    'onReady': onPlayerReady,
+                    'onStateChange': onPlayerStateChange
+                }
+            });
+        }
+        
+        function onPlayerReady(event) {
+            console.log('Video listo para reproducirse');
+        }
+        
+        function onPlayerStateChange(event) {
+            // Cuando el video termina (estado = 0)
+            if (event.data === YT.PlayerState.ENDED && !videoEnded) {
+                videoEnded = true;
+                mostrarPopup();
+            }
+            
+            // Resetear el flag si el video se reinicia
+            if (event.data === YT.PlayerState.PLAYING) {
+                videoEnded = false;
+            }
+        }
+        
+        function mostrarPopup() {
+            const modal = document.getElementById('video-end-modal');
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden'; // Prevenir scroll
+            console.log('Popup mostrado - Video terminado');
+        }
+        
+        function cerrarPopup() {
+            const modal = document.getElementById('video-end-modal');
+            modal.classList.remove('active');
+            document.body.style.overflow = 'auto'; // Restaurar scroll
+        }
+        
+        // FUNCIÓN PARA REDIRIGIR AL PRIMER PASO
+        function irAlPrimerPaso() {
+            const urlPrimerPaso = 'https://aivdownline.haily.ai/?id=Raquel71&firstname=Raquel&lastname=Gonzalez';
+            window.open(urlPrimerPaso, '_blank');
+            console.log('Redirigiendo al primer paso gratuito');
+            trackConversion('primer_paso_gratis');
+        }
+        
+        // FUNCIÓN PARA WHATSAPP
+        function abrirWhatsApp() {
+            const urlWhatsApp = 'https://wa.link/w8dfp7';
+            window.open(urlWhatsApp, '_blank');
+            console.log('Abriendo WhatsApp');
+            trackConversion('whatsapp_contacto');
+        }
+        
+        // Event Listeners
+        document.addEventListener('DOMContentLoaded', function() {
+            // Iniciar contador
+            iniciarContador();
+            
+            // Cargar API de YouTube
+            const tag = document.createElement('script');
+            tag.src = "https://www.youtube.com/iframe_api";
+            const firstScriptTag = document.getElementsByTagName('script')[0];
+            firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+            
+            // Cerrar modal con botón X
+            document.getElementById('modal-close').addEventListener('click', cerrarPopup);
+            
+            // Cerrar modal haciendo clic fuera
+            document.getElementById('video-end-modal').addEventListener('click', function(e) {
+                if (e.target === this) {
+                    cerrarPopup();
+                }
+            });
+            
+            // Botón "Comienza Gratis" en el modal
+            document.getElementById('modal-first-step-btn').addEventListener('click', function() {
+                cerrarPopup();
+                irAlPrimerPaso();
+            });
+            
+            // Botón principal de Primer Paso
+            document.getElementById('first-step-link').addEventListener('click', function(e) {
+                e.preventDefault();
+                irAlPrimerPaso();
+            });
+            
+            // Botón de WhatsApp en CTA
+            document.getElementById('whatsapp-link').addEventListener('click', function(e) {
+                e.preventDefault();
+                abrirWhatsApp();
+            });
+            
+            // Botón de WhatsApp en el header (botón de idioma)
+            document.querySelector('.lang-btn').addEventListener('click', function(e) {
+                e.preventDefault();
+                abrirWhatsApp();
+            });
+            
+            // Efecto de aparición gradual para las tarjetas
+            const tarjetas = document.querySelectorAll('.opportunity-card');
+            tarjetas.forEach((tarjeta, index) => {
+                tarjeta.style.opacity = '0';
+                tarjeta.style.transform = 'translateY(20px)';
+                
+                setTimeout(() => {
+                    tarjeta.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                    tarjeta.style.opacity = '1';
+                    tarjeta.style.transform = 'translateY(0)';
+                }, 300 + (index * 200));
+            });
+            
+            // Efecto para la sección de primer paso
+            const firstStepBox = document.querySelector('.first-step-box');
+            if (firstStepBox) {
+                firstStepBox.style.opacity = '0';
+                firstStepBox.style.transform = 'translateY(30px)';
+                
+                setTimeout(() => {
+                    firstStepBox.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+                    firstStepBox.style.opacity = '1';
+                    firstStepBox.style.transform = 'translateY(0)';
+                }, 500);
+            }
+            
+            console.log('Página Sleepmsystem cargada correctamente');
+            console.log('Enlaces actualizados con WhatsApp y Primer Paso gratuito');
+        });
+        
+        // Tecla Escape para cerrar modal
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                cerrarPopup();
+            }
+        });
+        
+        // Análisis de clics para conversiones
+        function trackConversion(tipo) {
+            console.log(`Conversión registrada: ${tipo} - ${new Date().toLocaleString()}`);
+            // Aquí puedes agregar código para Google Analytics, Facebook Pixel, etc.
+            
+            // Ejemplo para Google Analytics (si lo implementas)
+            // if (typeof gtag !== 'undefined') {
+            //     gtag('event', 'conversion', {
+            //         'event_category': tipo,
+            //         'event_label': 'sleepmsystem_conversion'
+            //     });
+            // }
+        }
+        
+        // Registrar clics en enlaces importantes (backup)
+        document.querySelectorAll('a[href*="aivdownline.haily.ai"]').forEach(enlace => {
+            enlace.addEventListener('click', function() {
+                trackConversion('primer_paso_gratis');
+            });
+        });
+        
+        document.querySelectorAll('a[href*="wa.link"]').forEach(enlace => {
+            enlace.addEventListener('click', function() {
+                trackConversion('whatsapp_contacto');
+            });
+        });
+        
+        // Función para controlar el scroll suave
+        function initSmoothScroll() {
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        }
+        
+        // Inicializar scroll suave cuando el DOM esté listo
+        document.addEventListener('DOMContentLoaded', initSmoothScroll);
+        
+        // Prevenir el envío de formularios (si hubiera)
+        document.querySelectorAll('form').forEach(form => {
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                console.log('Formulario prevenido - Redirigiendo al primer paso');
+                irAlPrimerPaso();
+            });
+        });
+    </script>
+</body>
+</html>
