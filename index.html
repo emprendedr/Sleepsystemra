@@ -6,7 +6,1059 @@
     <title>Sleepsystem · IA + Automatización | Lanzamiento 18 Feb 2026</title>
     <!-- Font Awesome 6 (iconos profesionales) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- YouTube API --><!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5">
+    <title>Sleepsystem · IA + Automatización | Lanzamiento 18 Feb 2026</title>
+    <!-- Font Awesome 6 (iconos profesionales) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <!-- YouTube API -->
+    <script src="https://www.youtube.com/iframe_api"></script>
+    <style>
+        /* ---------- RESET / GLOBAL ---------- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background: #fafcff;
+            color: #0b2a36;
+            line-height: 1.5;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* ---------- HEADER CON IMAGEN (NUEVO) ---------- */
+        .site-header {
+            background: white;
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(0,180,216,0.15);
+            box-shadow: 0 2px 10px rgba(0,70,100,0.02);
+        }
+
+        .logo-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: center; /* centrado opcional, puedes cambiarlo a flex-start */
+        }
+
+        .logo-wrapper img {
+            height: 52px;
+            width: auto;
+            max-width: 100%;
+            object-fit: contain;
+        }
+
+        /* ---------- HOOK PRINCIPAL (TEXTO + IMAGEN CHICA) ---------- */
+        .hook-section {
+            padding: 64px 0 48px;
+            background: white;
+            position: relative;
+        }
+
+        .hook-card {
+            max-width: 1150px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 40px;
+            padding: 48px 48px;
+            box-shadow: 0 20px 40px -10px rgba(0,100,130,0.08);
+            border: 1px solid rgba(0,180,216,0.2);
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+
+        .hook-text-col {
+            flex: 1 1 300px;
+        }
+
+        .hook-image-col {
+            flex: 0 0 320px;
+            text-align: center;
+        }
+
+        .hook-image-col img {
+            width: 100%;
+            max-width: 320px;
+            border-radius: 28px;
+            box-shadow: 0 20px 35px -5px rgba(0,90,120,0.25);
+            border: 1px solid rgba(0,180,216,0.3);
+            transform: rotate(2deg);
+            transition: transform 0.25s;
+        }
+
+        .hook-image-col img:hover {
+            transform: rotate(0deg) scale(1.02);
+        }
+
+        .hook-highlight {
+            font-size: 30px;
+            font-weight: 800;
+            line-height: 1.2;
+            color: #002a36;
+            margin-bottom: 24px;
+        }
+
+        .hook-highlight i {
+            color: #00b4d8;
+            margin-right: 8px;
+        }
+
+        .hook-sub {
+            font-size: 22px;
+            font-weight: 600;
+            color: #007296;
+            margin: 28px 0 16px;
+            border-left: 6px solid #00b4d8;
+            padding-left: 20px;
+        }
+
+        .hook-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 18px;
+            margin: 32px 0 24px;
+        }
+
+        .hook-bullet {
+            flex: 1 1 calc(50% - 18px);
+            background: #f0f9ff;
+            padding: 16px 22px;
+            border-radius: 60px;
+            font-size: 19px;
+            font-weight: 600;
+            color: #014353;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            border: 1px solid rgba(0,180,216,0.3);
+            transition: 0.2s;
+        }
+
+        .hook-bullet i {
+            color: #00b4d8;
+            font-size: 26px;
+            width: 32px;
+            text-align: center;
+        }
+
+        .hook-description {
+            font-size: 20px;
+            color: #1f5565;
+            margin: 30px 0 20px;
+            font-weight: 400;
+            padding: 12px 0;
+            border-top: 1px dashed #90e0ef;
+            border-bottom: 1px dashed #90e0ef;
+        }
+
+        .hook-final {
+            background: #e1f2f7;
+            padding: 24px 30px;
+            border-radius: 30px;
+            font-size: 22px;
+            font-weight: 600;
+            color: #003b4a;
+            display: inline-block;
+            margin-top: 12px;
+        }
+
+        .hook-final i {
+            color: #00a896;
+            margin-right: 10px;
+        }
+
+        /* ---------- CONTADOR / LANZAMIENTO 18/2/26 ---------- */
+        .launch-band {
+            background: linear-gradient(105deg, #082b36 0%, #0f4a5a 100%);
+            color: white;
+            padding: 40px 0 48px;
+            text-align: center;
+            border-top: 4px solid #ffb74d;
+            border-bottom: 4px solid #ffb74d;
+        }
+
+        .prelaunch-badge {
+            background: #ffb74d;
+            color: #0a1c28;
+            padding: 10px 32px;
+            border-radius: 60px;
+            font-weight: 800;
+            font-size: 24px;
+            display: inline-block;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+            box-shadow: 0 6px 0 #e68a00;
+        }
+
+        .countdown-title {
+            font-size: 34px;
+            font-weight: 700;
+            margin-bottom: 18px;
+            color: white;
+        }
+
+        .spots-box {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(5px);
+            padding: 14px 36px;
+            border-radius: 60px;
+            display: inline-block;
+            font-size: 26px;
+            font-weight: 700;
+            border: 2px solid #ffb74d;
+            margin: 24px 0 18px;
+        }
+
+        .countdown-row {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            flex-wrap: wrap;
+            margin-top: 32px;
+        }
+
+        .countdown-item {
+            background: rgba(0,0,0,0.25);
+            backdrop-filter: blur(4px);
+            padding: 18px 24px;
+            border-radius: 20px;
+            min-width: 110px;
+            border: 1px solid rgba(255,255,255,0.3);
+        }
+
+        .countdown-num {
+            font-size: 48px;
+            font-weight: 800;
+            display: block;
+            line-height: 1;
+            color: #ffeaa5;
+        }
+
+        .countdown-label {
+            font-size: 16px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            opacity: 0.9;
+        }
+
+        /* ---------- VIDEO (SOLO, SIN TEXTOS EXTRA) ---------- */
+        .video-block {
+            padding: 70px 0 70px;
+            background: white;
+        }
+
+        .video-wrapper {
+            max-width: 1000px;
+            margin: 0 auto;
+            border-radius: 28px;
+            overflow: hidden;
+            box-shadow: 0 25px 45px -12px rgba(0,90,110,0.3);
+            position: relative;
+            background: black;
+        }
+
+        .video-aspect {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+        }
+
+        .video-aspect iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* ---------- MODAL (POP-UP SEGUNDO 50) ---------- */
+        .modal-overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 30, 40, 0.92);
+            backdrop-filter: blur(8px);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 99999;
+        }
+
+        .modal-overlay.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: radial-gradient(circle at 30% 20%, #1a4a5a, #05222b);
+            border-radius: 40px;
+            width: 90%;
+            max-width: 560px;
+            padding: 48px 42px;
+            color: white;
+            text-align: center;
+            box-shadow: 0 35px 70px #0000004d;
+            border: 1px solid #00c3e0;
+            position: relative;
+            animation: modalPop 0.3s;
+        }
+
+        @keyframes modalPop {
+            0% { opacity: 0.7; transform: scale(0.92); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 18px; right: 22px;
+            background: none;
+            border: none;
+            color: #b2e6f0;
+            font-size: 38px;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        .modal-close:hover { color: white; transform: scale(1.2); }
+
+        .modal-icon-big {
+            font-size: 72px;
+            color: #ffd966;
+            margin-bottom: 16px;
+        }
+
+        .modal-title {
+            font-size: 38px;
+            font-weight: 800;
+            margin-bottom: 20px;
+            color: white;
+            text-shadow: 0 2px 6px black;
+        }
+
+        .modal-text {
+            font-size: 20px;
+            color: #def0f5;
+            margin-bottom: 28px;
+            line-height: 1.5;
+        }
+
+        .btn-whatsapp-modal {
+            background: linear-gradient(145deg, #25D366, #128C7E);
+            border: none;
+            padding: 20px 38px;
+            font-size: 24px;
+            font-weight: 700;
+            border-radius: 60px;
+            color: white;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 14px;
+            width: 100%;
+            max-width: 380px;
+            margin: 16px auto 8px;
+            cursor: pointer;
+            transition: 0.2s;
+            box-shadow: 0 12px 28px #25d36680;
+        }
+        .btn-whatsapp-modal:hover { transform: translateY(-5px); background: #1da851; }
+
+        .modal-footer-note {
+            margin-top: 22px;
+            font-size: 16px;
+            color: #aad8e0;
+        }
+
+        /* ---------- BENEFICIOS GENERALES (IA, REDES, ETC) ---------- */
+        .benefits-section {
+            padding: 70px 0 50px;
+            background: #f4fbff;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 35px;
+            margin-top: 30px;
+        }
+
+        .benefit-card {
+            background: white;
+            border-radius: 32px;
+            padding: 38px 28px;
+            text-align: center;
+            box-shadow: 0 8px 25px rgba(0,120,140,0.06);
+            transition: all 0.25s;
+            border-bottom: 5px solid #00b4d8;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeUp 0.6s forwards;
+        }
+
+        .benefit-card:nth-child(1) { animation-delay: 0.1s; }
+        .benefit-card:nth-child(2) { animation-delay: 0.2s; }
+        .benefit-card:nth-child(3) { animation-delay: 0.3s; }
+        .benefit-card:nth-child(4) { animation-delay: 0.4s; }
+
+        @keyframes fadeUp {
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .benefit-icon {
+            background: #00b4d8;
+            width: 90px;
+            height: 90px;
+            border-radius: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 42px;
+            color: white;
+            margin: 0 auto 24px;
+            box-shadow: 0 14px 0 #005f7a, 0 15px 25px rgba(0,180,216,0.3);
+        }
+
+        .benefit-title {
+            font-size: 26px;
+            font-weight: 700;
+            color: #01465a;
+            margin-bottom: 18px;
+        }
+
+        .benefit-desc {
+            font-size: 17px;
+            color: #2c6370;
+        }
+
+        /* ---------- NUEVA SECCIÓN: 2 PRODUCTOS DE ALTO VALOR ---------- */
+        .product-opportunity {
+            padding: 80px 0 80px;
+            background: white;
+        }
+
+        .section-title-center {
+            text-align: center;
+            font-size: 42px;
+            font-weight: 800;
+            color: #014551;
+            margin-bottom: 20px;
+        }
+
+        .section-sub-center {
+            text-align: center;
+            font-size: 22px;
+            color: #006277;
+            margin-bottom: 50px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .product-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 20px;
+        }
+
+        .product-card {
+            background: linear-gradient(145deg, #ffffff, #f2faff);
+            border-radius: 36px;
+            padding: 40px 30px;
+            flex: 1 1 300px;
+            max-width: 400px;
+            box-shadow: 0 20px 35px -8px rgba(0,110,130,0.12);
+            border: 1px solid rgba(0,180,216,0.25);
+            transition: transform 0.25s, box-shadow 0.3s;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 30px 45px -5px rgba(0,150,180,0.2);
+            border-color: #00b4d8;
+        }
+
+        .product-badge {
+            position: absolute;
+            top: 18px;
+            right: -35px;
+            background: #ffb74d;
+            color: #0b2a36;
+            font-weight: 800;
+            font-size: 16px;
+            padding: 10px 40px;
+            transform: rotate(45deg);
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            letter-spacing: 1.5px;
+        }
+
+        .product-icon {
+            background: #00b4d8;
+            width: 100px;
+            height: 100px;
+            border-radius: 28px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 48px;
+            color: white;
+            margin: 0 auto 28px;
+            box-shadow: 0 15px 0 #005f7a, 0 15px 25px rgba(0,180,216,0.3);
+        }
+
+        .product-title {
+            font-size: 30px;
+            font-weight: 800;
+            color: #004256;
+            margin-bottom: 16px;
+        }
+
+        .product-desc {
+            font-size: 19px;
+            color: #1e5568;
+            margin-bottom: 25px;
+            line-height: 1.5;
+        }
+
+        .product-highlight {
+            background: #e5f3f7;
+            border-radius: 60px;
+            padding: 16px 20px;
+            font-size: 20px;
+            font-weight: 700;
+            color: #007296;
+            display: inline-block;
+            border-left: 5px solid #ffb74d;
+        }
+
+        .product-micro-cta {
+            margin-top: 30px;
+            font-size: 18px;
+            font-weight: 600;
+            color: #0f4a5a;
+        }
+
+        .product-micro-cta i {
+            color: #25D366;
+            margin-right: 8px;
+        }
+
+        /* ---------- CTA FINAL WHATSAPP (MISMO NÚMERO) ---------- */
+        .cta-footer {
+            background: linear-gradient(145deg, #0a3340, #01161e);
+            padding: 80px 0 90px;
+            color: white;
+            text-align: center;
+        }
+
+        .cta-card {
+            max-width: 750px;
+            margin: 0 auto;
+            background: rgba(255,255,255,0.04);
+            backdrop-filter: blur(10px);
+            padding: 58px 48px;
+            border-radius: 70px 70px 70px 20px;
+            border: 1px solid #3fa3b0;
+        }
+
+        .cta-title {
+            font-size: 48px;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+
+        .cta-title span {
+            color: #ffd966;
+        }
+
+        .cta-description {
+            font-size: 24px;
+            color: #d3f2f7;
+            margin-bottom: 36px;
+        }
+
+        .btn-whatsapp-cta {
+            background: linear-gradient(145deg, #25D366, #128C7E);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 18px;
+            padding: 24px 58px;
+            font-size: 30px;
+            font-weight: 700;
+            color: white;
+            text-decoration: none;
+            border-radius: 80px;
+            box-shadow: 0 14px 28px #25d36680;
+            transition: 0.2s;
+            border: none;
+            cursor: pointer;
+        }
+        .btn-whatsapp-cta i { font-size: 42px; }
+        .btn-whatsapp-cta:hover { transform: scale(1.05); background: #1da851; }
+
+        .spots-note {
+            margin-top: 32px;
+            font-size: 22px;
+            background: rgba(255,183,77,0.2);
+            padding: 14px 28px;
+            border-radius: 60px;
+            display: inline-block;
+            border: 1px solid #ffb74d;
+        }
+
+        /* ---------- PIE DE PÁGINA ---------- */
+        footer {
+            background: #02131b;
+            color: white;
+            padding: 48px 0 32px;
+            font-size: 15px;
+        }
+
+        .footer-legal {
+            max-width: 900px;
+            margin: 0 auto;
+            background: rgba(255,255,255,0.02);
+            padding: 30px;
+            border-radius: 30px;
+            border-left: 6px solid #ffb74d;
+        }
+
+        .footer-legal p {
+            opacity: 0.8;
+            margin-bottom: 14px;
+        }
+
+        .copyright {
+            text-align: center;
+            margin-top: 36px;
+            opacity: 0.6;
+            border-top: 1px solid #1a4a5a;
+            padding-top: 26px;
+        }
+
+        /* responsive */
+        @media (max-width: 900px) {
+            .hook-card { flex-direction: column; text-align: center; }
+            .hook-image-col { flex-basis: auto; }
+            .hook-bullet { flex: 1 1 100%; }
+        }
+        @media (max-width: 700px) {
+            .hook-card { padding: 32px 20px; }
+            .countdown-item { min-width: 80px; padding: 12px 16px; }
+            .countdown-num { font-size: 36px; }
+            .cta-title { font-size: 38px; }
+            .btn-whatsapp-cta { font-size: 24px; padding: 18px 36px; }
+            .product-card { max-width: 100%; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ENCABEZADO CON NUEVA IMAGEN -->
+    <header class="site-header">
+        <div class="container">
+            <div class="logo-wrapper">
+                <img src="https://github.com/emprendedr/Sleepsystemra/raw/main/A40CD0D0-9C0B-4BBC-8144-ACFC5138B79A.png" 
+                     alt="Sleepsystem - Sistema de automatización e IA">
+            </div>
+        </div>
+    </header>
+
+    <!-- SECCIÓN PRINCIPAL: TEXTO + IMAGEN DE LA CHICA -->
+    <section class="hook-section">
+        <div class="container">
+            <div class="hook-card">
+                <!-- COLUMNA DE TEXTO -->
+                <div class="hook-text-col">
+                    <div class="hook-highlight">
+                        <i class="fas fa-robot"></i> Si eres emprendedor y quieres aprovechar el poder de la IA, las redes sociales y la automatización...
+                    </div>
+                    <p style="font-size: 26px; font-weight: 600; color: #005f73; margin: 8px 0 16px;">Esta puede ser la oportunidad que estabas esperando.</p>
+                    
+                    <div class="hook-sub">
+                        Descubre cómo generar hasta <span style="background: #ffe083; padding: 5px 15px; border-radius: 60px; color: #003542;">$9,000 en 30 días</span> utilizando un sistema simple, probado y diseñado para convertir.
+                    </div>
+
+                    <!-- BULLETS CON ICONOS -->
+                    <div class="hook-grid">
+                        <div class="hook-bullet"><i class="fas fa-check-circle"></i> No necesitas experiencia previa</div>
+                        <div class="hook-bullet"><i class="fas fa-microchip"></i> No necesitas habilidades técnicas</div>
+                        <div class="hook-bullet"><i class="fas fa-cubes"></i> No necesitas crear productos propios</div>
+                        <div class="hook-bullet"><i class="fas fa-bullseye"></i> Solo necesitas decisión y acción</div>
+                    </div>
+
+                    <p class="hook-description">
+                        <i class="fas fa-moon" style="margin-right: 12px;"></i> Es un modelo fácil de manejar, con pasos claros y herramientas que trabajan contigo — incluso mientras duermes.<br>
+                        <span style="display: block; margin-top: 18px; font-weight: 700; font-size: 23px;">Mientras otros siguen intentando...<br> tú puedes estar construyendo un ingreso real y escalable.</span>
+                    </p>
+
+                    <div class="hook-final">
+                        <i class="fas fa-shield-alt"></i> Esta no es una promesa vacía.<br> 
+                        Es un sistema estructurado para personas que están listas para avanzar.<br>
+                        <span style="font-size: 26px; display: block; margin-top: 18px; color: #004e62;">Si estás listo para cambiar tu resultado, empieza hoy.</span>
+                    </div>
+                </div>
+
+                <!-- COLUMNA DE IMAGEN (CHICA) -->
+                <div class="hook-image-col">
+                    <img 
+                        src="https://github.com/emprendedr/Sleepsystemra/raw/main/291D74E3-7E40-4EDE-A68B-EC3762119CCE.png" 
+                        alt="Sleepsystem - Oportunidad de ingresos con IA y automatización"
+                    >
+                    <p style="margin-top: 16px; font-size: 17px; color: #007296; font-weight: 600;"><i class="fas fa-eye"></i> Sistema real, resultados reales</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- LANZAMIENTO 18/2/26 · CONTADOR + 15 CUPOS -->
+    <section class="launch-band">
+        <div class="container">
+            <span class="prelaunch-badge"><i class="fas fa-calendar-alt"></i> LANZAMIENTO 18·FEB·2026</span>
+            <h2 class="countdown-title">⏳ Acceso exclusivo para los primeros 15 emprendedores</h2>
+            <div class="spots-box">
+                <i class="fas fa-ticket"></i> SOLO 15 CUPOS DISPONIBLES
+            </div>
+            <div class="countdown-row" id="countdownRow">
+                <div class="countdown-item">
+                    <span class="countdown-num" id="days">00</span>
+                    <span class="countdown-label">DÍAS</span>
+                </div>
+                <div class="countdown-item">
+                    <span class="countdown-num" id="hours">00</span>
+                    <span class="countdown-label">HORAS</span>
+                </div>
+                <div class="countdown-item">
+                    <span class="countdown-num" id="minutes">00</span>
+                    <span class="countdown-label">MINUTOS</span>
+                </div>
+                <div class="countdown-item">
+                    <span class="countdown-num" id="seconds">00</span>
+                    <span class="countdown-label">SEGUNDOS</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SOLO VIDEO – SIN TEXTOS ADICIONALES -->
+    <section class="video-block">
+        <div class="container" style="max-width: 1000px;">
+            <div class="video-wrapper">
+                <div class="video-aspect">
+                    <iframe id="video-player" 
+                        src="https://www.youtube.com/embed/VxXUOZX2SgQ?enablejsapi=1&rel=0&modestbranding=1&controls=1&showinfo=0" 
+                        title="Sleepsystem IA y automatización" 
+                        frameborder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                        allowfullscreen>
+                    </iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MODAL (POPUP) – aparece a los 50 segundos -->
+    <div class="modal-overlay" id="popupModal">
+        <div class="modal-content">
+            <button class="modal-close" id="closeModalBtn">&times;</button>
+            <div class="modal-icon-big">
+                <i class="fas fa-video"></i>
+            </div>
+            <h3 class="modal-title">¿Cómo funciona?</h3>
+            <p class="modal-text">
+                <strong>Solicita una presentación en vivo o una grabación personalizada</strong> donde te explicamos el sistema paso a paso: IA, redes sociales y automatización.
+            </p>
+            <div style="background: rgba(0,200,220,0.1); padding: 18px; border-radius: 28px; margin-bottom: 12px;">
+                <span style="font-size: 28px; font-weight: 800; color: #ffe083;"><i class="fab fa-whatsapp"></i> +1 832 331 5178</span>
+            </div>
+            <button class="btn-whatsapp-modal" id="modalWhatsappBtn">
+                <i class="fab fa-whatsapp"></i> Solicitar presentación
+            </button>
+            <p class="modal-footer-note">
+                <i class="fas fa-bolt"></i> Respuesta inmediata, cupos limitados
+            </p>
+        </div>
+    </div>
+
+    <!-- BENEFICIOS GENERALES (IA, REDES, AUTOMATIZACIÓN) -->
+    <section class="benefits-section">
+        <div class="container">
+            <h2 style="text-align: center; font-size: 42px; font-weight: 800; color: #014551; margin-bottom: 20px;">Estructura que transforma</h2>
+            <p style="text-align: center; font-size: 22px; color: #006277; margin-bottom: 40px;">Sistema probado, pasos claros, cero complicaciones</p>
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="benefit-icon"><i class="fas fa-brain"></i></div>
+                    <h3 class="benefit-title">IA aplicada</h3>
+                    <p class="benefit-desc">Herramientas de inteligencia artificial que trabajan 24/7, sin que toques código.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon"><i class="fas fa-hashtag"></i></div>
+                    <h3 class="benefit-title">Redes sociales</h3>
+                    <p class="benefit-desc">Estrategias de contenido y tráfico orgánico + automatización.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon"><i class="fas fa-clock"></i></div>
+                    <h3 class="benefit-title">Escala mientras duermes</h3>
+                    <p class="benefit-desc">El sistema no descansa. Tú tampoco tendrás que hacerlo.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon"><i class="fas fa-chart-simple"></i></div>
+                    <h3 class="benefit-title">$9,000 en 30 días</h3>
+                    <p class="benefit-desc">Modelo replicable, ya probado por decenas de emprendedores.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== SECCIÓN: OPORTUNIDAD CON 2 PRODUCTOS DE ALTO VALOR ========== -->
+    <section class="product-opportunity">
+        <div class="container">
+            <h2 class="section-title-center">🚀 Oportunidad para emprendedores</h2>
+            <p class="section-sub-center">
+                Gana con <strong>2 productos de alto valor</strong> recién lanzados al mercado:  
+                tecnología para el buen dormir y alivio de dolores crónicos.  
+                Un sistema que <span style="background: #ffe083; padding: 4px 16px; border-radius: 60px;">podría llenar tus bolsillos este 2026</span>.
+            </p>
+
+            <div class="product-grid">
+                <!-- PRODUCTO 1: BUEN DORMIR -->
+                <div class="product-card">
+                    <div class="product-badge">NUEVO</div>
+                    <div class="product-icon">
+                        <i class="fas fa-bed"></i>
+                    </div>
+                    <h3 class="product-title">Sistema de sueño inteligente</h3>
+                    <p class="product-desc">
+                        Colchón con IA, sensores de descanso y climatización adaptativa.  
+                        <strong>Alta demanda, margen exclusivo para distribuidores.</strong>
+                    </p>
+                    <div class="product-highlight">
+                        <i class="fas fa-tag"></i> Lanzamiento 2026
+                    </div>
+                    <div class="product-micro-cta">
+                        <i class="fab fa-whatsapp"></i> +1 832 331 5178 · Info exclusiva
+                    </div>
+                </div>
+
+                <!-- PRODUCTO 2: ALIVIO DOLORES CRÓNICOS -->
+                <div class="product-card">
+                    <div class="product-badge">ALTA DEMANDA</div>
+                    <div class="product-icon">
+                        <i class="fas fa-spa"></i>
+                    </div>
+                    <h3 class="product-title">Terapia de alivio regenerativo</h3>
+                    <p class="product-desc">
+                        Dispositivo de neuroestimulación para dolores crónicos de espalda y articulaciones.  
+                        <strong>Sin fármacos, resultados inmediatos.</strong>
+                    </p>
+                    <div class="product-highlight">
+                        <i class="fas fa-tag"></i> Patentado · Recién lanzado
+                    </div>
+                    <div class="product-micro-cta">
+                        <i class="fab fa-whatsapp"></i> Cupos limitados para distribuidores
+                    </div>
+                </div>
+            </div>
+
+            <p style="text-align: center; margin-top: 50px; font-size: 24px; font-weight: 600; color: #003b4a;">
+                <i class="fas fa-gem" style="color: #ffb74d;"></i>  
+                Sistema probado · Respaldo total · Modelo llave en mano  
+            </p>
+        </div>
+    </section>
+
+    <!-- CTA FINAL: WHATSAPP + 15 CUPOS -->
+    <section class="cta-footer">
+        <div class="container">
+            <div class="cta-card">
+                <h2 class="cta-title">¿Listo para <span>empezar hoy?</span></h2>
+                <p class="cta-description">
+                    <i class="fas fa-calendar-check"></i> Lanzamiento 18 Feb · 15 cupos exclusivos
+                </p>
+                <button id="ctaWhatsappBtn" class="btn-whatsapp-cta">
+                    <i class="fab fa-whatsapp"></i> Quiero mi presentación
+                </button>
+                <div class="spots-note">
+                    <i class="fas fa-lock"></i> Acceso prioritario a los 15 primeros
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER / DISCLAIMER -->
+    <footer>
+        <div class="container">
+            <div class="footer-legal">
+                <p><i class="fas fa-exclamation-triangle" style="color: #ffb74d;"></i> Esta página no es parte de Facebook, Instagram ni ninguna red social.</p>
+                <p>Los resultados mostrados ($9,000 en 30 días) son el reflejo de emprendedores que aplicaron el sistema con dedicación. No garantizamos resultados idénticos, ya que cada persona tiene su propio nivel de ejecución.</p>
+                <p>Sleepsystem provee la metodología, el entrenamiento y las herramientas. El éxito depende de tu compromiso y acción. Oferta de lanzamiento limitada a 15 cupos.</p>
+            </div>
+            <div class="copyright">
+                <p>© 2026 Sleepsystem · Sistema de automatización e IA para emprendedores</p>
+                <p>Lanzamiento 18 febrero 2026 – 15 cupos disponibles</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // -------------------------------------------------------------
+        // 1. CONTADOR REGRESIVO -> 18 Feb 2026 23:59:59
+        // -------------------------------------------------------------
+        function launchCountdown() {
+            const launch = new Date(2026, 1, 18, 23, 59, 59); 
+
+            function update() {
+                const now = new Date().getTime();
+                const diff = launch - now;
+
+                if (diff <= 0) {
+                    document.getElementById('days').textContent = '00';
+                    document.getElementById('hours').textContent = '00';
+                    document.getElementById('minutes').textContent = '00';
+                    document.getElementById('seconds').textContent = '00';
+                    return;
+                }
+
+                const days = Math.floor(diff / (86400000));
+                const hours = Math.floor((diff % 86400000) / 3600000);
+                const minutes = Math.floor((diff % 3600000) / 60000);
+                const seconds = Math.floor((diff % 60000) / 1000);
+
+                document.getElementById('days').textContent = days < 10 ? '0' + days : days;
+                document.getElementById('hours').textContent = hours < 10 ? '0' + hours : hours;
+                document.getElementById('minutes').textContent = minutes < 10 ? '0' + minutes : minutes;
+                document.getElementById('seconds').textContent = seconds < 10 ? '0' + seconds : seconds;
+            }
+            update();
+            setInterval(update, 1000);
+        }
+        launchCountdown();
+
+        // -------------------------------------------------------------
+        // 2. YOUTUBE API - BLOQUEO SEGUNDO 50 Y POPUP
+        // -------------------------------------------------------------
+        let player;
+        let modalTriggered = false;
+        let watchInterval = null;
+
+        window.onYouTubeIframeAPIReady = function() {
+            player = new YT.Player('video-player', {
+                events: {
+                    'onReady': (e) => console.log('Video listo'),
+                    'onStateChange': onPlayerStateChange
+                }
+            });
+        };
+
+        function onPlayerStateChange(event) {
+            // 1 = reproduciendo
+            if (event.data === YT.PlayerState.PLAYING) {
+                // si ya saltó el popup, pausamos inmediatamente (bloqueo)
+                if (modalTriggered) {
+                    player.pauseVideo();
+                    return;
+                }
+                // monitorear cada 200ms hasta llegar a 50s
+                if (watchInterval) clearInterval(watchInterval);
+                watchInterval = setInterval(function() {
+                    if (player && player.getCurrentTime && !modalTriggered) {
+                        const currentTime = player.getCurrentTime();
+                        if (currentTime >= 50) {
+                            modalTriggered = true;
+                            player.pauseVideo();      // BLOQUEO
+                            openModal();
+                            clearInterval(watchInterval);
+                        }
+                    }
+                }, 200);
+            }
+            if (event.data === YT.PlayerState.PAUSED || event.data === YT.PlayerState.ENDED) {
+                if (watchInterval) clearInterval(watchInterval);
+            }
+        }
+
+        // -------------------------------------------------------------
+        // 3. POPUP MODAL
+        // -------------------------------------------------------------
+        const modal = document.getElementById('popupModal');
+        const closeModalBtn = document.getElementById('closeModalBtn');
+
+        function openModal() {
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            modal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        closeModalBtn.addEventListener('click', closeModal);
+        modal.addEventListener('click', function(e) {
+            if (e.target === modal) closeModal();
+        });
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && modal.classList.contains('active')) closeModal();
+        });
+
+        // -------------------------------------------------------------
+        // 4. WHATSAPP - NÚMERO ÚNICO 18323315178
+        // -------------------------------------------------------------
+        const WHATSAPP_NUMBER = '18323315178'; // +1 832 331 5178
+
+        function openWhatsappSolicitud() {
+            const nombre = prompt('👋 Ingresa tu nombre completo para recibir la presentación en vivo o grabada. Un asesor te contactará en minutos.');
+            if (nombre && nombre.trim() !== '') {
+                const msg = `Hola, vi el video y me interesa el sistema de IA, redes sociales y automatización. Solicito una presentación EN VIVO o una GRABACIÓN. Mi nombre es: ${nombre.trim()}. Cupo limitado – 15 disponibles.`;
+                const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(msg)}`;
+                window.open(url, '_blank');
+            } else if (nombre !== null) {
+                alert('Por favor ingresa tu nombre para que podamos atenderte.');
+            }
+        }
+
+        // botón dentro del modal
+        document.getElementById('modalWhatsappBtn').addEventListener('click', function(e) {
+            e.preventDefault();
+            closeModal();
+            openWhatsappSolicitud();
+        });
+
+        // botón CTA principal
+        document.getElementById('ctaWhatsappBtn').addEventListener('click', function(e) {
+            e.preventDefault();
+            openWhatsappSolicitud();
+        });
+
+        // si el usuario intenta reproducir después del bloqueo, lo pausamos de nuevo
+        setInterval(function() {
+            if (player && modalTriggered) {
+                try {
+                    if (player.getPlayerState() === YT.PlayerState.PLAYING) {
+                        player.pauseVideo();
+                    }
+                } catch(e) {}
+            }
+        }, 400);
+    </script>
+</body>
+</html>
     <script src="https://www.youtube.com/iframe_api"></script>
     <style>
         /* ---------- RESET / GLOBAL ---------- */
