@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5">
-    <title>Sleepsystem · IA + Automatización | Lanzamiento 18 Feb 26</title>
-    <meta name="description" content="Sistema simple, probado y diseñado para emprendedores. IA, redes sociales y automatización: hasta $9,000 en 30 días. Sin experiencia técnica.">
+    <title>Sleepsystem · IA + Automatización | Lanzamiento 18 Feb 2026</title>
     <!-- Font Awesome 6 (iconos profesionales) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <!-- YouTube API -->
@@ -25,7 +24,7 @@
         }
 
         .container {
-            max-width: 1120px;
+            max-width: 1200px;
             margin: 0 auto;
             padding: 0 24px;
         }
@@ -67,7 +66,7 @@
             color: transparent;
         }
 
-        /* ---------- HOOK PRINCIPAL (NUEVO TEXTO) ---------- */
+        /* ---------- HOOK PRINCIPAL (TEXTO + IMAGEN) ---------- */
         .hook-section {
             padding: 64px 0 48px;
             background: white;
@@ -75,18 +74,40 @@
         }
 
         .hook-card {
-            max-width: 1000px;
+            max-width: 1150px;
             margin: 0 auto;
             background: white;
             border-radius: 40px;
-            padding: 48px 48px 56px;
+            padding: 48px 48px;
             box-shadow: 0 20px 40px -10px rgba(0,100,130,0.08);
             border: 1px solid rgba(0,180,216,0.2);
-            transition: transform 0.25s ease;
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            flex-wrap: wrap;
         }
 
-        .hook-card:hover {
-            transform: scale(1.01);
+        .hook-text-col {
+            flex: 1 1 300px;
+        }
+
+        .hook-image-col {
+            flex: 0 0 320px;
+            text-align: center;
+        }
+
+        .hook-image-col img {
+            width: 100%;
+            max-width: 320px;
+            border-radius: 28px;
+            box-shadow: 0 20px 35px -5px rgba(0,90,120,0.25);
+            border: 1px solid rgba(0,180,216,0.3);
+            transform: rotate(2deg);
+            transition: transform 0.25s;
+        }
+
+        .hook-image-col img:hover {
+            transform: rotate(0deg) scale(1.02);
         }
 
         .hook-highlight {
@@ -523,12 +544,17 @@
         }
 
         /* responsive */
+        @media (max-width: 900px) {
+            .hook-card { flex-direction: column; text-align: center; }
+            .hook-image-col { flex-basis: auto; }
+            .hook-bullet { flex: 1 1 100%; }
+        }
         @media (max-width: 700px) {
             .hook-card { padding: 32px 20px; }
-            .hook-bullet { flex: 1 1 100%; }
             .countdown-item { min-width: 80px; padding: 12px 16px; }
             .countdown-num { font-size: 36px; }
             .cta-title { font-size: 38px; }
+            .btn-whatsapp-cta { font-size: 24px; padding: 18px 36px; }
         }
     </style>
 </head>
@@ -546,36 +572,48 @@
         </div>
     </header>
 
-    <!-- SECCIÓN PRINCIPAL - TEXTO PROPORCIONADO (HOOK COMPLETO) -->
+    <!-- SECCIÓN PRINCIPAL: TEXTO + IMAGEN (GANCHO DE CONVERSIÓN) -->
     <section class="hook-section">
         <div class="container">
             <div class="hook-card">
-                <div class="hook-highlight">
-                    <i class="fas fa-robot"></i> Si eres emprendedor y quieres aprovechar el poder de la IA, las redes sociales y la automatización...
-                </div>
-                <p style="font-size: 26px; font-weight: 600; color: #005f73; margin: 8px 0 16px;">Esta puede ser la oportunidad que estabas esperando.</p>
-                
-                <div class="hook-sub">
-                    Descubre cómo generar hasta <span style="background: #ffe083; padding: 5px 15px; border-radius: 60px; color: #003542;">$9,000 en 30 días</span> utilizando un sistema simple, probado y diseñado para convertir.
+                <!-- COLUMNA DE TEXTO -->
+                <div class="hook-text-col">
+                    <div class="hook-highlight">
+                        <i class="fas fa-robot"></i> Si eres emprendedor y quieres aprovechar el poder de la IA, las redes sociales y la automatización...
+                    </div>
+                    <p style="font-size: 26px; font-weight: 600; color: #005f73; margin: 8px 0 16px;">Esta puede ser la oportunidad que estabas esperando.</p>
+                    
+                    <div class="hook-sub">
+                        Descubre cómo generar hasta <span style="background: #ffe083; padding: 5px 15px; border-radius: 60px; color: #003542;">$9,000 en 30 días</span> utilizando un sistema simple, probado y diseñado para convertir.
+                    </div>
+
+                    <!-- BULLETS CON ICONOS -->
+                    <div class="hook-grid">
+                        <div class="hook-bullet"><i class="fas fa-check-circle"></i> No necesitas experiencia previa</div>
+                        <div class="hook-bullet"><i class="fas fa-microchip"></i> No necesitas habilidades técnicas</div>
+                        <div class="hook-bullet"><i class="fas fa-cubes"></i> No necesitas crear productos propios</div>
+                        <div class="hook-bullet"><i class="fas fa-bullseye"></i> Solo necesitas decisión y acción</div>
+                    </div>
+
+                    <p class="hook-description">
+                        <i class="fas fa-moon" style="margin-right: 12px;"></i> Es un modelo fácil de manejar, con pasos claros y herramientas que trabajan contigo — incluso mientras duermes.<br>
+                        <span style="display: block; margin-top: 18px; font-weight: 700; font-size: 23px;">Mientras otros siguen intentando...<br> tú puedes estar construyendo un ingreso real y escalable.</span>
+                    </p>
+
+                    <div class="hook-final">
+                        <i class="fas fa-shield-alt"></i> Esta no es una promesa vacía.<br> 
+                        Es un sistema estructurado para personas que están listas para avanzar.<br>
+                        <span style="font-size: 26px; display: block; margin-top: 18px; color: #004e62;">Si estás listo para cambiar tu resultado, empieza hoy.</span>
+                    </div>
                 </div>
 
-                <!-- BULLETS CON ICONOS LLAMATIVOS -->
-                <div class="hook-grid">
-                    <div class="hook-bullet"><i class="fas fa-check-circle"></i> No necesitas experiencia previa</div>
-                    <div class="hook-bullet"><i class="fas fa-microchip"></i> No necesitas habilidades técnicas</div>
-                    <div class="hook-bullet"><i class="fas fa-cubes"></i> No necesitas crear productos propios</div>
-                    <div class="hook-bullet"><i class="fas fa-bullseye"></i> Solo necesitas decisión y acción</div>
-                </div>
-
-                <p class="hook-description">
-                    <i class="fas fa-moon" style="margin-right: 12px;"></i> Es un modelo fácil de manejar, con pasos claros y herramientas que trabajan contigo — incluso mientras duermes.<br>
-                    <span style="display: block; margin-top: 18px; font-weight: 700; font-size: 23px;">Mientras otros siguen intentando...<br> tú puedes estar construyendo un ingreso real y escalable.</span>
-                </p>
-
-                <div class="hook-final">
-                    <i class="fas fa-shield-alt"></i> Esta no es una promesa vacía.<br> 
-                    Es un sistema estructurado para personas que están listas para avanzar.<br>
-                    <span style="font-size: 26px; display: block; margin-top: 18px; color: #004e62;">Si estás listo para cambiar tu resultado, empieza hoy.</span>
+                <!-- COLUMNA DE IMAGEN (DESDE GITHUB) -->
+                <div class="hook-image-col">
+                    <img 
+                        src="https://github.com/emprendedr/Sleepsystemra/raw/main/291D74E3-7E40-4EDE-A68B-EC3762119CCE.png" 
+                        alt="Sleepsystem - Oportunidad de ingresos con IA y automatización"
+                    >
+                    <p style="margin-top: 16px; font-size: 17px; color: #007296; font-weight: 600;"><i class="fas fa-eye"></i> Sistema real, resultados reales</p>
                 </div>
             </div>
         </div>
