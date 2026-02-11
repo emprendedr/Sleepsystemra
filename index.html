@@ -66,7 +66,7 @@
             color: transparent;
         }
 
-        /* ---------- HOOK PRINCIPAL (TEXTO + IMAGEN) ---------- */
+        /* ---------- HOOK PRINCIPAL (TEXTO + IMAGEN CHICA) ---------- */
         .hook-section {
             padding: 64px 0 48px;
             background: white;
@@ -387,9 +387,9 @@
             color: #aad8e0;
         }
 
-        /* ---------- BENEFICIOS (ICONOS LLAMATIVOS + ANIMACIÓN) ---------- */
+        /* ---------- BENEFICIOS GENERALES (IA, REDES, ETC) ---------- */
         .benefits-section {
-            padding: 70px 0 80px;
+            padding: 70px 0 50px;
             background: #f4fbff;
         }
 
@@ -446,6 +446,123 @@
         .benefit-desc {
             font-size: 17px;
             color: #2c6370;
+        }
+
+        /* ---------- NUEVA SECCIÓN: 2 PRODUCTOS DE ALTO VALOR ---------- */
+        .product-opportunity {
+            padding: 80px 0 80px;
+            background: white;
+        }
+
+        .section-title-center {
+            text-align: center;
+            font-size: 42px;
+            font-weight: 800;
+            color: #014551;
+            margin-bottom: 20px;
+        }
+
+        .section-sub-center {
+            text-align: center;
+            font-size: 22px;
+            color: #006277;
+            margin-bottom: 50px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .product-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 20px;
+        }
+
+        .product-card {
+            background: linear-gradient(145deg, #ffffff, #f2faff);
+            border-radius: 36px;
+            padding: 40px 30px;
+            flex: 1 1 300px;
+            max-width: 400px;
+            box-shadow: 0 20px 35px -8px rgba(0,110,130,0.12);
+            border: 1px solid rgba(0,180,216,0.25);
+            transition: transform 0.25s, box-shadow 0.3s;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 30px 45px -5px rgba(0,150,180,0.2);
+            border-color: #00b4d8;
+        }
+
+        .product-badge {
+            position: absolute;
+            top: 18px;
+            right: -35px;
+            background: #ffb74d;
+            color: #0b2a36;
+            font-weight: 800;
+            font-size: 16px;
+            padding: 10px 40px;
+            transform: rotate(45deg);
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            letter-spacing: 1.5px;
+        }
+
+        .product-icon {
+            background: #00b4d8;
+            width: 100px;
+            height: 100px;
+            border-radius: 28px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 48px;
+            color: white;
+            margin: 0 auto 28px;
+            box-shadow: 0 15px 0 #005f7a, 0 15px 25px rgba(0,180,216,0.3);
+        }
+
+        .product-title {
+            font-size: 30px;
+            font-weight: 800;
+            color: #004256;
+            margin-bottom: 16px;
+        }
+
+        .product-desc {
+            font-size: 19px;
+            color: #1e5568;
+            margin-bottom: 25px;
+            line-height: 1.5;
+        }
+
+        .product-highlight {
+            background: #e5f3f7;
+            border-radius: 60px;
+            padding: 16px 20px;
+            font-size: 20px;
+            font-weight: 700;
+            color: #007296;
+            display: inline-block;
+            border-left: 5px solid #ffb74d;
+        }
+
+        .product-micro-cta {
+            margin-top: 30px;
+            font-size: 18px;
+            font-weight: 600;
+            color: #0f4a5a;
+        }
+
+        .product-micro-cta i {
+            color: #25D366;
+            margin-right: 8px;
         }
 
         /* ---------- CTA FINAL WHATSAPP (MISMO NÚMERO) ---------- */
@@ -555,6 +672,7 @@
             .countdown-num { font-size: 36px; }
             .cta-title { font-size: 38px; }
             .btn-whatsapp-cta { font-size: 24px; padding: 18px 36px; }
+            .product-card { max-width: 100%; }
         }
     </style>
 </head>
@@ -572,7 +690,7 @@
         </div>
     </header>
 
-    <!-- SECCIÓN PRINCIPAL: TEXTO + IMAGEN (GANCHO DE CONVERSIÓN) -->
+    <!-- SECCIÓN PRINCIPAL: TEXTO + IMAGEN DE LA CHICA (AL PRINCIPIO) -->
     <section class="hook-section">
         <div class="container">
             <div class="hook-card">
@@ -607,7 +725,7 @@
                     </div>
                 </div>
 
-                <!-- COLUMNA DE IMAGEN (DESDE GITHUB) -->
+                <!-- COLUMNA DE IMAGEN (CHICA) - AL PRINCIPIO -->
                 <div class="hook-image-col">
                     <img 
                         src="https://github.com/emprendedr/Sleepsystemra/raw/main/291D74E3-7E40-4EDE-A68B-EC3762119CCE.png" 
@@ -688,7 +806,7 @@
         </div>
     </div>
 
-    <!-- BENEFICIOS CON ICONOS PROFESIONALES Y ANIMACIÓN -->
+    <!-- BENEFICIOS GENERALES (IA, REDES, AUTOMATIZACIÓN) -->
     <section class="benefits-section">
         <div class="container">
             <h2 style="text-align: center; font-size: 42px; font-weight: 800; color: #014551; margin-bottom: 20px;">Estructura que transforma</h2>
@@ -715,6 +833,63 @@
                     <p class="benefit-desc">Modelo replicable, ya probado por decenas de emprendedores.</p>
                 </div>
             </div>
+        </div>
+    </section>
+
+    <!-- ========== NUEVA SECCIÓN: OPORTUNIDAD CON 2 PRODUCTOS DE ALTO VALOR ========== -->
+    <section class="product-opportunity">
+        <div class="container">
+            <h2 class="section-title-center">🚀 Oportunidad para emprendedores</h2>
+            <p class="section-sub-center">
+                Gana con <strong>2 productos de alto valor</strong> recién lanzados al mercado:  
+                tecnología para el buen dormir y alivio de dolores crónicos.  
+                Un sistema que <span style="background: #ffe083; padding: 4px 16px; border-radius: 60px;">podría llenar tus bolsillos este 2026</span>.
+            </p>
+
+            <div class="product-grid">
+                <!-- PRODUCTO 1: BUEN DORMIR -->
+                <div class="product-card">
+                    <div class="product-badge">NUEVO</div>
+                    <div class="product-icon">
+                        <i class="fas fa-bed"></i>
+                    </div>
+                    <h3 class="product-title">Sistema de sueño inteligente</h3>
+                    <p class="product-desc">
+                        Colchón con IA, sensores de descanso y climatización adaptativa.  
+                        <strong>Alta demanda, margen exclusivo para distribuidores.</strong>
+                    </p>
+                    <div class="product-highlight">
+                        <i class="fas fa-tag"></i> Lanzamiento 2026
+                    </div>
+                    <div class="product-micro-cta">
+                        <i class="fab fa-whatsapp"></i> +1 832 331 5178 · Info exclusiva
+                    </div>
+                </div>
+
+                <!-- PRODUCTO 2: ALIVIO DOLORES CRÓNICOS -->
+                <div class="product-card">
+                    <div class="product-badge">ALTA DEMANDA</div>
+                    <div class="product-icon">
+                        <i class="fas fa-spa"></i>
+                    </div>
+                    <h3 class="product-title">Terapia de alivio regenerativo</h3>
+                    <p class="product-desc">
+                        Dispositivo de neuroestimulación para dolores crónicos de espalda y articulaciones.  
+                        <strong>Sin fármacos, resultados inmediatos.</strong>
+                    </p>
+                    <div class="product-highlight">
+                        <i class="fas fa-tag"></i> Patentado · Recién lanzado
+                    </div>
+                    <div class="product-micro-cta">
+                        <i class="fab fa-whatsapp"></i> Cupos limitados para distribuidores
+                    </div>
+                </div>
+            </div>
+
+            <p style="text-align: center; margin-top: 50px; font-size: 24px; font-weight: 600; color: #003b4a;">
+                <i class="fas fa-gem" style="color: #ffb74d;"></i>  
+                Sistema probado · Respaldo total · Modelo llave en mano  
+            </p>
         </div>
     </section>
 
